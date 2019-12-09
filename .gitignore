@@ -1,0 +1,8 @@
+/build/
+/springcloud-eureka-server/bin
+/springcloud-eureka-server/build
+/springcloud-eureka-server/.classpath
+/springcloud-eureka-server/.project
+/springcloud-eureka-server/.settings
+/springcloud-consumer-feign-config-swagger/out
+/.idea
