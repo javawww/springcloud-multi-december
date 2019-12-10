@@ -8,7 +8,7 @@ spring:
       discovery:
         enabled: true
         service-id: springcloud-config-server
-      fail-fast: true
+      fail-fast: false
       username: root
       password: booszy
       profile: csdn

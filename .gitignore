@@ -6,9 +6,12 @@
 /springcloud-eureka-server/.settings
 /springcloud-consumer-feign-config-swagger/out
 /.idea
-
+*.original
+*.jar
+*.MF
 *.bin
 *.lock
+*.class
 cache.properties
 gc.properties
 gradle
