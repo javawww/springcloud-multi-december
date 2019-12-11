@@ -11,7 +11,7 @@ spring:
       fail-fast: false
       username: root
       password: booszy
-      profile: csdn
+#      profile: dev
 eureka:
   client:
     service-url:

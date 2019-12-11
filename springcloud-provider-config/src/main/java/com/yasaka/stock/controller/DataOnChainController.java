@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DataOnChainController {
 
-    @Autowired
-    private DataOnChainService dataOnChainService;
-
-
-    @PostMapping("/registerOnChain")
-    public String registerOnChain(){
-
-    }
+//    @Autowired
+//    private DataOnChainService dataOnChainService;
+//
+//
+//    @PostMapping("/registerOnChain")
+//    public String registerOnChain(){
+//
+//    }
 }
