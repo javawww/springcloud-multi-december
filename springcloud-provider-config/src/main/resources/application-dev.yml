@@ -10,13 +10,11 @@ spring:
       ddl-auto: update
   datasource:
     druid:
-      url: jdbc:mysql://139.199.77.147:3308/djs_master
+      url: jdbc:mysql://139.199.77.147:3308/djs_master?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=UTC
       username: root
       password: 888888
   application:
     name: springcloud-provider-config
-  profiles:
-    active: production
 logging:
   level:
     root: info

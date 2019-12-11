@@ -163,21 +163,21 @@ public class DataOnChainController {
                 return  new ResultJson<>(ResultStatusEnum.COMMON_FAIL, "活动签退失败");
             }
     }
-    /**
-    * @Description: 批量上链各种信息
-    * @Param:
-    * @return:  上线成功||失败 信息
-    * @Author: zack
-    * @Date: 2019/12/11
-    */
-    @PostMapping("/batchOnChain")
-    public ResultJson<BucketRegisterResponse> batchOnChain(@RequestBody ActivityRegisterRequest req) {
-        try {
-            BucketRegisterResponse response = dataOnChainService.batchOnChain(req);
-            return new ResultJson<>(ResultStatusEnum.COMMON_SUCCESS,response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return  new ResultJson<>(ResultStatusEnum.COMMON_FAIL, "注册数据桶失败");
-        }
-    }
+//    /**
+//    * @Description: 批量上链各种信息
+//    * @Param:
+//    * @return:  上线成功||失败 信息
+//    * @Author: zack
+//    * @Date: 2019/12/11
+//    */
+//    @PostMapping("/batchOnChain")
+//    public ResultJson<BucketRegisterResponse> batchOnChain(@RequestBody ActivityRegisterRequest req) {
+//        try {
+//            BucketRegisterResponse response = dataOnChainService.batchOnChain(req);
+//            return new ResultJson<>(ResultStatusEnum.COMMON_SUCCESS,response);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return  new ResultJson<>(ResultStatusEnum.COMMON_FAIL, "注册数据桶失败");
+//        }
+//    }
 }
