@@ -3,6 +3,7 @@ package com.yasaka.stock.enity.request;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.Data;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -27,6 +28,7 @@ public class RegisterOnChainRequest implements Serializable {
      * 上链基本数据信息(一次最少1条,最大一次50条)
      */
     @Size(min = 1,max = 50)
+    @NotEmpty(message = "上链基本信息为空")
     private List<OnChainData> baseData;
 
     @Data
@@ -46,14 +48,5 @@ public class RegisterOnChainRequest implements Serializable {
          */
         @NotNull(message = "公开文本值不能为空")
         private String type;
-//        /**
-//         * 用户密码
-//         */
-//        @NotNull(message = "用户密码为空")
-//        private String pwd;
-//        /**
-//         *  必选，此 item 的 id，长度不超过 32 位，只能由大小写字母或数字组成
-//         */
-//        private String id;
     }
 }

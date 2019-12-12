@@ -27,7 +27,7 @@ public class OnChainDataRequest implements Serializable {
          * 参数的字段定义是不同的，但是，任何项目都有一个 id
          */
         @NotEmpty(message = "上链参数集合为空")
-        private List<T> args;
+        private T args;
         /**
          * 上链的动作（action）类别，
          * 如 voluntary-activity-register 代表公共活动注册
