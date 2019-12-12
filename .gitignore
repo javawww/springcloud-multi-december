@@ -18,3 +18,4 @@ gradle
 /*.bat
 gradle/wrapper/*.jar
 gradle/wrapper/*.properties
+*/build

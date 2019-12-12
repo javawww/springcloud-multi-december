@@ -8,6 +8,7 @@ package ltd.vastchain.api;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import ltd.vastchain.api.vctc.*;
 import ltd.vastchain.api.vctc.argsModels.VoluntaryActivitySignModel;
 import okhttp3.*;
@@ -16,10 +17,12 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 
+@Slf4j
 public class Main {
     private static MediaType mediaType = MediaType.parse("application/json");
 
     public static void main(String[] args) throws VCTCException {
+        log.info("55555");
 	    // GET 命令测试
 //        callAPI("GET", "/", "a=3&f=%20&b=5", "");
 

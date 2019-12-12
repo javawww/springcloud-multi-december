@@ -4,9 +4,8 @@ import com.google.zxing.*;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
-import sun.misc.BASE64Encoder;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -139,13 +138,14 @@ public class QRCodeUtil {
     public static String encodeBase64(String content, String imgPath, boolean needCompress, String words) {
         BufferedImage image = QRCodeUtil.createImage(content, imgPath, needCompress);
         BufferedImage insertWords = insertWord(image, words);
-        BASE64Encoder encoder = new BASE64Encoder();
+//        BASE64Encoder encoder = new BASE64Encoder();
         String base64String = "";
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(insertWords, "png", baos); // 第二个参数“jpg”不需要修改
             byte[] bytes = baos.toByteArray();
-            base64String = encoder.encodeBuffer(bytes).trim();
+//            base64String = encoder.encodeBuffer(bytes).trim();
+            base64String = Base64.encodeBase64(bytes).toString().trim();
             base64String = base64String.replaceAll("\n", "").replaceAll("\r", "");// 删除 \r\n
         } catch (IOException e) {
             System.out.println("异常为："+e.getMessage());
@@ -164,13 +164,14 @@ public class QRCodeUtil {
      **/
     public static String encodePayBase64(String content) {
         BufferedImage image = QRCodeUtil.createImage(content, "buddha-djs-component\\src\\main\\resources\\photo\\2.png", true);
-        BASE64Encoder encoder = new BASE64Encoder();
+//        BASE64Encoder encoder = new BASE64Encoder();
         String base64String = "";
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(image, "png", baos); // 第二个参数“jpg”不需要修改
             byte[] bytes = baos.toByteArray();
-            base64String = encoder.encodeBuffer(bytes).trim();
+//            base64String = encoder.encodeBuffer(bytes).trim();
+            base64String = Base64.encodeBase64(bytes).toString().trim();
             base64String = base64String.replaceAll("\n", "").replaceAll("\r", "");// 删除 \r\n
         } catch (IOException e) {
             System.out.println("异常为：" + e.getMessage());
@@ -328,9 +329,10 @@ public class QRCodeUtil {
         BufferedImage codeImage = QRCodeUtil.createImage(content, logoPath, true);
         BufferedImage mergePicture = SharedImageUtils.mergePicture(baseImage, roundAvator, name, codeImage);
         byte[] bytes = imageToBytes(mergePicture, "png");
-        BASE64Encoder encoder = new BASE64Encoder();
+//        BASE64Encoder encoder = new BASE64Encoder();
         String base64String = "";
-        base64String = encoder.encodeBuffer(bytes).trim();
+//        base64String = encoder.encodeBuffer(bytes).trim();
+        base64String = Base64.encodeBase64(bytes).toString().trim();
         base64String = base64String.replaceAll("\n", "").replaceAll("\r", "");// 删除 \r\n
         System.out.println("data:image/png;base64," + base64String);
         return base64String;
@@ -357,9 +359,10 @@ public class QRCodeUtil {
 		return url;
 		*/
         byte[] bytes = imageToBytes(mergePicture, "png");
-        BASE64Encoder encoder = new BASE64Encoder();
+//        BASE64Encoder encoder = new BASE64Encoder();
         String base64String = "";
-        base64String = encoder.encodeBuffer(bytes).trim();
+//        base64String = encoder.encodeBuffer(bytes).trim();
+        base64String = Base64.encodeBase64(bytes).toString().trim();
         base64String = base64String.replaceAll("\n", "").replaceAll("\r", "");// 删除 \r\n
         //System.out.println("data:image/png;base64," + base64String);
         return base64String;
@@ -370,9 +373,10 @@ public class QRCodeUtil {
         BufferedImage baseImage = ImageIO.read(new FileInputStream(bgPath));
         BufferedImage mergePicture = SharedImageUtils.mergeVIPSunPicture(baseImage, roundAvator, name, codeImage);
         byte[] bytes = imageToBytes(mergePicture, "png");
-        BASE64Encoder encoder = new BASE64Encoder();
+//        BASE64Encoder encoder = new BASE64Encoder();
         String base64String = "";
-        base64String = encoder.encodeBuffer(bytes).trim();
+//        base64String = encoder.encodeBuffer(bytes).trim();
+        base64String = Base64.encodeBase64(bytes).toString().trim();
         base64String = base64String.replaceAll("\n", "").replaceAll("\r", "");// 删除 \r\n
         System.out.println("data:image/png;base64," + base64String);
         return base64String;
@@ -399,11 +403,12 @@ public class QRCodeUtil {
         BufferedImage codeImage = QRCodeUtil.createImage(content, "buddha-djs-component\\src\\main\\resources\\photo\\2.png", true);
         BufferedImage mergePicture = SharedImageUtils.mergeIvtPicture(baseImage, roundAvator, name,ivtCode, codeImage);
         byte[] bytes = imageToBytes(mergePicture, "png");
-        BASE64Encoder encoder = new BASE64Encoder();
+//        BASE64Encoder encoder = new BASE64Encoder();
         String base64String = "";
-        base64String = encoder.encodeBuffer(bytes).trim();
+//        base64String = encoder.encodeBuffer(bytes).trim();
+        base64String = Base64.encodeBase64(bytes).toString().trim();
         base64String = base64String.replaceAll("\n", "").replaceAll("\r", "");// 删除 \r\n
-        log.info("data:image/png;base64," + base64String);
+//        log.info("data:image/png;base64,{}" , base64String);
         return base64String;
     }
 

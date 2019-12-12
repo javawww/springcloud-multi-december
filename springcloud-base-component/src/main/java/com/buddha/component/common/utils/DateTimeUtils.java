@@ -1,6 +1,5 @@
 package com.buddha.component.common.utils;
 
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -152,7 +151,7 @@ public final class DateTimeUtils {
 			Date date = new Date(ld);// 转换为标准时间对象
 			return getDateTimeFormatToString(date, pattern);
 		} catch (Exception e) {
-			log.error("获取标准北京时间异常", e);
+//			log.error("获取标准北京时间异常", e);
 		}
 		return getDateTimeFormatToString(new Date(), pattern);
 	}

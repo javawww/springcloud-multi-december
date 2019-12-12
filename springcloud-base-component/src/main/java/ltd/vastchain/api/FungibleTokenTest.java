@@ -4,10 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.buddha.component.common.utils.DateTimeUtils;
 import com.buddha.component.common.utils.QRCodeUtil;
 import com.buddha.component.common.utils.StringUtils;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import ltd.vastchain.api.vctc.DataUploadItem;
 import ltd.vastchain.api.vctc.Signature;
-import sun.misc.BASE64Encoder;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -23,7 +23,7 @@ import java.util.Map;
  * @CreateDate: 2019/12/9/009 11:39
  * @Version: 1.0
  */
-@Log4j2
+@Slf4j
 public class FungibleTokenTest {
 
     public static void main(String[] args) throws IOException {
@@ -62,9 +62,10 @@ public class FungibleTokenTest {
         String iconUrl = "https://imgwechat.5idjs.com/djsLogo.png";
         BufferedImage srcImage = ImageIO.read(new URL(iconUrl));
         byte[] bytes = QRCodeUtil.imageToBytes(srcImage, "png");
-        BASE64Encoder encoder = new BASE64Encoder();
+//        BASE64Encoder encoder = new BASE64Encoder();
         String base64String = "";
-        base64String = encoder.encodeBuffer(bytes).trim();
+//        base64String = encoder.encodeBuffer(bytes).trim();
+        base64String = Base64.encodeBase64(bytes).toString().trim();
         base64String = base64String.replaceAll("\n", "").replaceAll("\r", "");// 删除 \r\n
         base64String = "data:image/png;base64," + base64String;
         args.put("icon",base64String);
@@ -122,7 +123,7 @@ public class FungibleTokenTest {
         items.put("type",DataUploadItem.Type_Issue_Test);
         items.put("args",args);
         String id = DateTimeUtils.getOdrInternal();
-        log.info("id:{{}}",id);
+        //log.info("id:{{}}",id);
         args.put("id", id);
         args.put("tokenAppId", Signature.APPID);
         args.put("tokenId","SDXToken");
@@ -179,7 +180,7 @@ public class FungibleTokenTest {
         items.put("type",DataUploadItem.Type_Transfer_Test);
         items.put("args",args);
         String id = DateTimeUtils.getOdrInternal();
-        log.info("id:{{}}",id);
+        //log.info("id:{{}}",id);
         args.put("id", id);
         args.put("tokenAppId", Signature.APPID);
         args.put("tokenId","SDXToken");
@@ -305,13 +306,13 @@ public class FungibleTokenTest {
             if (StringUtils.isNotNull(v)) {
                 query.append("&").append(k).append("=").append(v);
             } else {
-                log.info("key对应的value值为空字符串或null,key:{{}}", k);
+                //log.info("key对应的value值为空字符串或null,key:{{}}", k);
             }
         });
         if (query.length() > 0) {
             target = query.substring(1, query.length());
         }
-        log.info("target:{{}}", target);
+        //log.info("target:{{}}", target);
         return target;
     }
 }

@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.buddha.component.common.utils.RandomUtil;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import ltd.vastchain.api.Main;
 import ltd.vastchain.api.VCTCException;
 import ltd.vastchain.api.chain.entity.ChainIdMsg;
@@ -25,7 +25,7 @@ import static ltd.vastchain.api.Main.callAPI;
  * @author: zack
  * @create: 2019-12-09 15:15
  **/
-@Log4j2
+@Slf4j
 public class OnChain {
     private static MediaType mediaType = MediaType.parse("application/json");
 
@@ -69,7 +69,7 @@ public class OnChain {
         JSONObject jsonObject = new JSONObject();
         String activityId = "EV" + new Date().getTime();
         jsonObject.put("id",activityId);
-        log.info("活动id:{}",activityId);
+        //log.info("活动id:{}",activityId);
         jsonObject.put("createTime",new Date().getTime());
         jsonObject.put("title","窈窕淑女");
         jsonObject.put("desc","君子好逑");
@@ -224,7 +224,7 @@ public class OnChain {
      */
     public static void registerChain() throws VCTCException {
         String activityId1 = "EV" + new Date().getTime() + "";// + new Date().getTime();
-        log.info("activityId为:>>>>>>>>>>>>>>>{}", activityId1);
+        //log.info("activityId为:>>>>>>>>>>>>>>>{}", activityId1);
         VoluntaryActivityRegisterModel modelRegister = new VoluntaryActivityRegisterModel() {{
             id = activityId1;
             createTime = Long.toString(new Date().getTime());
