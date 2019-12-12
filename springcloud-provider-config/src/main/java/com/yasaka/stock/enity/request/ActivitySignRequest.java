@@ -1,27 +1,18 @@
 package com.yasaka.stock.enity.request;
 
 import lombok.Data;
-
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Map;
 
 /**
- * @program: springcloud-multi-december
+ * @program: springCloud-multi-december
  * @description: 活动签到请求体
  * @author: zack
  * @create: 2019-12-11 13:44
  **/
 @Data
 public class ActivitySignRequest implements Serializable {
-
-    /**
-     * 签到数据实体
-     */
-    private ActivitySignData signData;
-
-   @Data
-   public static class ActivitySignData{
     /**
      * 可选，此次签到/签退的 id，长度不超过 32 位，只能由大小写字母或数字组成，在同一个 appId 中不能重复
      */
@@ -53,5 +44,4 @@ public class ActivitySignRequest implements Serializable {
      * 可选，备注
      */
     private String  memo;
-    }
 }

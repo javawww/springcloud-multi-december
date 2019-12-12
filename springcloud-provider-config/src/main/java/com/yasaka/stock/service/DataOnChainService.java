@@ -5,7 +5,7 @@ import com.yasaka.stock.enity.request.*;
 import com.yasaka.stock.enity.response.BucketRegisterResponse;
 
 /**
- * @program: springcloud-multi-december
+ * @program: springCloud-multi-december
  * @description: 数据上链接口
  * @author: zack
  * @create: 2019-12-10 14:11
@@ -24,7 +24,7 @@ public interface DataOnChainService {
      * @param req
      * @return
      */
-    Boolean dataItemCreate(RegisterOnChainRequest req);
+    BucketRegisterResponse dataItemCreate(RegisterOnChainRequest req);
 
     /**
      * 公共活动注册

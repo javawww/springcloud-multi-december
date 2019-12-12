@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @program: springcloud-multi-december
+ * @program: springCloud-multi-december
  * @description: 注册数据桶返回体
  * @author: zack
  * @create: 2019-12-11 11:38
@@ -19,7 +19,8 @@ public class BucketRegisterResponse implements Serializable {
      */
     private String bucketId;
     /**
-     * 错误信息
+     * 错误信息 status":"pending","version":"1"
+     * pending 代表已进入上链队列，处于「待定」状态
      */
     private String msg;
 }

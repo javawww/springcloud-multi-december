@@ -70,7 +70,7 @@ public class DataOnChainController {
      * @Date: 2019/12/10
      */
     @PostMapping("/dataItemCreate")
-    public ResultJson dataItemCreate(@RequestBody RegisterOnChainRequest req) {
+    public ResultJson<BucketRegisterResponse> dataItemCreate(@RequestBody RegisterOnChainRequest req) {
         try {
             if (StringUtils.isNull(req.getBaseData())){
                 return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"上链基本数据列表为空");
@@ -78,15 +78,7 @@ public class DataOnChainController {
             if(StringUtils.isNull(req.getBucketId())){
                 return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"数据桶id为空");
             }
-            if (StringUtils.isNull(req.getBaseData())){
-
-            }
-            Boolean  b = dataOnChainService.dataItemCreate(req);
-            if (b){
-                return new ResultJson<>(ResultStatusEnum.COMMON_SUCCESS,"上链基本数据成功");
-            }else {
-                return  new ResultJson<>(ResultStatusEnum.COMMON_FAIL, "上链基本数据失败");
-            }
+          return new ResultJson<>(ResultStatusEnum.COMMON_SUCCESS,dataOnChainService.dataItemCreate(req));
         } catch (Exception e) {
             e.printStackTrace();
             return  new ResultJson<>(ResultStatusEnum.COMMON_FAIL, "上链基本数据失败");
@@ -118,13 +110,13 @@ public class DataOnChainController {
     @PostMapping("/activitySignIn")
     public ResultJson<BucketRegisterResponse> activitySignIn(@RequestBody ActivitySignRequest req) {
         try {
-            if (StringUtils.isNull(req.getSignData().getParentId())){
+            if (StringUtils.isNull(req.getParentId())){
             return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"活动id为空");
             }
-            if (StringUtils.isNull(req.getSignData().getUserId())){
+            if (StringUtils.isNull(req.getUserId())){
                 return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"用户id为空");
             }
-            if (StringUtils.isNull(req.getSignData().getCreateTime())){
+            if (StringUtils.isNull(req.getCreateTime())){
                 return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"签到/签退的时间为空");
             }
             BucketRegisterResponse response = dataOnChainService.activitySignIn(req);
@@ -144,16 +136,16 @@ public class DataOnChainController {
         @PostMapping("/activitySignOut")
         public ResultJson<BucketRegisterResponse> activitySignOut(@RequestBody ActivitySignRequest req) {
             try {
-                if (StringUtils.isNull(req.getSignData().getParentId())){
+                if (StringUtils.isNull(req.getParentId())){
                     return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"活动id为空");
                 }
-                if (StringUtils.isNull(req.getSignData().getUserId())){
+                if (StringUtils.isNull(req.getUserId())){
                     return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"用户id为空");
                 }
-                if (StringUtils.isNull(req.getSignData().getCreateTime())){
+                if (StringUtils.isNull(req.getCreateTime())){
                     return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"签到/签退的时间为空");
                 }
-                if (StringUtils.isNull(req.getSignData().getDurationInMinutes())){
+                if (StringUtils.isNull(req.getDurationInMinutes())){
                     return new ResultJson<>(ResultStatusEnum.PARAMETER_ERROR,"本次活动在线时长为空");
                 }
                 BucketRegisterResponse response = dataOnChainService.activitySignOut(req);
@@ -163,21 +155,4 @@ public class DataOnChainController {
                 return  new ResultJson<>(ResultStatusEnum.COMMON_FAIL, "活动签退失败");
             }
     }
-//    /**
-//    * @Description: 批量上链各种信息
-//    * @Param:
-//    * @return:  上线成功||失败 信息
-//    * @Author: zack
-//    * @Date: 2019/12/11
-//    */
-//    @PostMapping("/batchOnChain")
-//    public ResultJson<BucketRegisterResponse> batchOnChain(@RequestBody ActivityRegisterRequest req) {
-//        try {
-//            BucketRegisterResponse response = dataOnChainService.batchOnChain(req);
-//            return new ResultJson<>(ResultStatusEnum.COMMON_SUCCESS,response);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return  new ResultJson<>(ResultStatusEnum.COMMON_FAIL, "注册数据桶失败");
-//        }
-//    }
 }
