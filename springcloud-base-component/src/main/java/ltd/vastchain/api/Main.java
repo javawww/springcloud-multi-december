@@ -363,7 +363,7 @@ public class Main {
                     .build();
 
             Response response = client.newCall(build).execute();
-            System.out.println(response.body().string());
+            //System.out.println(response.body().string());
             final APIResponse res = JSON.parseObject(response.body().string(), APIResponse.class);
 
             if (res.status.equals("success") || res.status.equals("pending")) {
